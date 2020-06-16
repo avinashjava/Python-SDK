@@ -290,7 +290,6 @@ print(samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHAN
     }
   ]
 }
-
 ```
 
 
