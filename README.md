@@ -70,8 +70,8 @@ samco=StocknoteAPIPythonBridge()
   "status": "Success",
   "statusMessage": "Login session token generated successfully ",
   "sessionToken": "cbcc85c02d057187a4c6512ae0978946",
-  "accountID": "DS37591",
-  "accountName": "SUSHREE SONALIKA ROUT",
+  "accountID": "client_id",
+  "accountName": "client_name",
   "exchangeList": [
     "BSE",
     "NSE"
@@ -88,3 +88,8 @@ samco=StocknoteAPIPythonBridge()
   ]
 }
 ```
+4. Get the session token form login response and set it to `set_session_token` function.
+```python
+samcoAPI.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
+```
+
