@@ -52,14 +52,4 @@ from snapi_py_client.snapi_bridge
 2. Create a StocknoteAPIPythonBridge object
 ```python
 samco=StocknoteAPIPythonBridge()
-
-```### Get an session token
-1. Import StocknoteAPIPythonBridge
-```
-from snapi_py_client.snapi_bridge
-```
-
-2. Create a StocknoteAPIPythonBridge object
-```python
-samco=StocknoteAPIPythonBridge()
 ```
