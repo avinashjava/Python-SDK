@@ -55,6 +55,5 @@ samco=StocknoteAPIPythonBridge()
 ```
 3. Get the login function so you can login with your Stocknote APi by providing below parameters.
 
-### Parameters:
-
+## Parameters:
     userId, password, yob
