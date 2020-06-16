@@ -107,16 +107,11 @@ print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchang
 #### search response:
 ```python
 {
-    "msgId": "a9080992-71f3-47a9-9b53-b6103f4eb6ba",
-    "status": "Success",
-    "statusMessage": "Equity Search details retrieved successfully",
-    "equityDertivativeValues": [
-        {
-            "tradingSymbol": "BANKNIFTY20JUNFUT",
-            "instrument": "FUTIDX",
-            "exchange": "NFO"
-        },
-        {
+ "msgId": "a9080992-71f3-47a9-9b53-b6103f4eb6ba",
+  "status": "Success",
+  "statusMessage": "Equity Search details retrieved successfully",
+  "equityDertivativeValues": [
+       {
             "tradingSymbol": "BANKNIFTY20JUN21000CE",
             "instrument": "OPTIDX",
             "exchange": "NFO"
@@ -153,41 +148,6 @@ print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchang
         },
         {
             "tradingSymbol": "BANKNIFTY20JUN19500PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN18000PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN23000CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN18500PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN22500CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN24000CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN17000PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN20500PE",
             "instrument": "OPTIDX",
             "exchange": "NFO"
         }
