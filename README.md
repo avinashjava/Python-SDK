@@ -57,12 +57,12 @@ samco=StocknoteAPIPythonBridge()
 
 ## Parameters:
     userId, password, yob
-## Login sample request:
+## Login Sample Request:
   ```python
   print(samco.login(body={"userId":'*****','password':'*****','yob':'****'}))
   ##this will return a user details and generated session token
   ```
- ## Login response:
+ ## Login Response:
  ```python
  {
   "serverTime": "16/06/20 12:36:52",
@@ -100,11 +100,11 @@ To search equity, derivatives and commodity scrips based on user provided search
 ```python
 search_symbol_name,exchange
 ```
-#### sample Search request:
+#### sample Search Request:
 ```python
 print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchange=samco.EXCHANGE_NFO))
 ```
-#### Search response:
+#### Search Response:
 ```python
 {
  "msgId": "a9080992-71f3-47a9-9b53-b6103f4eb6ba",
@@ -253,6 +253,44 @@ print(samco.get_quote(symbol_name='BANKNIFTY18JUN2017900PE',exchange=samco.EXCHA
     "oIChangePer": "58.05"
 }
 ```
+### OptionChain:
+To search OptionChain for equity, derivatives and commodity scrips based on user provided search symbol and exchange name.
 
+#### Parameters:
+```python
+search_symbol_name,exchange,expiry_date,strike_price,option_type
+```
+#### Sample OptionChain Request:
+```python
+print(samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHANGE_NFO,expiry_date='2020-07-30',strike_price='1961.40',option_type='PE'))
+```
+#### OptionChain Response:
+```python
+{
+  "serverTime": "16/06/20 14:48:53",
+  "msgId": "9922deb8-dcdb-402f-a282-9f8df0b2fdee",
+  "status": "Success",
+  "statusMessage": "OptionChain details retrived successfully. ",
+  "optionChainDetails": [
+    {
+      "tradingSymbol": "RELIANCE20JUL1961.4PE",
+      "exchange": "NFO",
+      "symbol": "38914_NFO",
+      "strikePrice": "1961.40",
+      "expiryDate": "2020-07-30",
+      "instrument": "OPTSTK",
+      "optionType": "PE",
+      "underLyingSymbol": "RELIANCE",
+      "spotPrice": "1613.45",
+      "lastTradedPrice": "0.00",
+      "openInterest": "0",
+      "openInterestChange": "0",
+      "oichangePer": "0",
+      "volume": "0"
+    }
+  ]
+}
+
+```
 
 
