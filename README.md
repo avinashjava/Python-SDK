@@ -94,4 +94,14 @@ samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
 ## this function will help to reduce to pass session token for other apis. This will automate the session token for other apis
 ```
 ### Search Equity & Derivative:
+To search equity, derivatives and commodity scrips based on user provided search symbol and exchange name.
+
+#### parameters:
+```python
+search_symbol_name,exchange
+```
+#### search sample request:
+```python
+print(samco.search_equity_derivative(search_symbol_name="TCS",exchange=samco.EXCHANGE_NFO))
+```
 
