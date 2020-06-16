@@ -60,4 +60,5 @@ samco=StocknoteAPIPythonBridge()
     
   ```
   print(samco.login(body={"userId":'*****','password':'*****','yob':'****'}))
+  this will login will return
   ```
