@@ -160,13 +160,99 @@ Get market depth details for a specific equity scrip including but not limited t
 #### Parameters:
 ```python
 symbol_name,exchange
-``
-
+```
 #### Sample Quote request:
 ```python
-print(samco.get_quote(symbol_name='TCS',exchange=samco.EXCHANGE_NSE))
+print(samco.get_quote(symbol_name='BANKNIFTY18JUN2017900PE',exchange=samco.EXCHANGE_NFO))
 ```
 #### Quote Response:
+```python
+{
+    "serverTime": "16/06/20 14:06:12",
+    "msgId": "b6322a42-1e3f-4706-af6d-6e88c32a5ee5",
+    "status": "Success",
+    "statusMessage": "Quote details retrieved successfully",
+    "tradingSymbol": "BANKNIFTY18JUN2017900PE",
+    "exchange": "NFO",
+    "lastTradedTime": "16/06/2020 14:08:05",
+    "lastTradedPrice": "54.25",
+    "changeValue": "19.45",
+    "changePercentage": "55.89",
+    "lastTradedQuantity": "40",
+    "lowerCircuitLimit": "0.05",
+    "upperCircuitLimit": "138.95",
+    "averagePrice": "37.63",
+    "totalBuyQuantity": "85520",
+    "totalSellQuantity": "17100",
+    "totalTradedValue": "1.57858 (Crs)",
+    "totalTradedVolume": "419500",
+    "yearlyHighPrice": "0.00",
+    "yearlyLowPrice": "0.00",
+    "tickSize": "0.05",
+    "openInterest": "16880",
+    "bestBids": [
+        {
+            "number": "1",
+            "quantity": "20",
+            "price": "54.00"
+        },
+        {
+            "number": "2",
+            "quantity": "40",
+            "price": "53.95"
+        },
+        {
+            "number": "3",
+            "quantity": "40",
+            "price": "53.85"
+        },
+        {
+            "number": "4",
+            "quantity": "40",
+            "price": "53.75"
+        },
+        {
+            "number": "5",
+            "quantity": "120",
+            "price": "53.70"
+        }
+    ],
+    "bestAsks": [
+        {
+            "number": "1",
+            "quantity": "20",
+            "price": "54.55"
+        },
+        {
+            "number": "2",
+            "quantity": "80",
+            "price": "54.60"
+        },
+        {
+            "number": "3",
+            "quantity": "40",
+            "price": "54.65"
+        },
+        {
+            "number": "4",
+            "quantity": "40",
+            "price": "54.70"
+        },
+        {
+            "number": "5",
+            "quantity": "480",
+            "price": "54.75"
+        }
+    ],
+    "expiryDate": "18 Jun 20",
+    "spotPrice": "19959.35",
+    "instrument": "OPTIDX",
+    "lotQuantity": "20",
+    "listingId": "41870_NFO",
+    "openInterestChange": "8800",
+    "oIChangePer": "58.05"
+}
+```
 
 
 
