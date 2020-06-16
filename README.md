@@ -57,8 +57,34 @@ samco=StocknoteAPIPythonBridge()
 
 ## Parameters:
     userId, password, yob
-## Login sample code:
+## Login sample request:
   ```python
   print(samco.login(body={"userId":'*****','password':'*****','yob':'****'}))
   ##this will return a user details and generated session token
   ```
+ ## Login response:
+ ```python
+ {
+  "serverTime": "16/06/20 12:36:52",
+  "msgId": "580d405d-663e-49e4-9a5d-26d439bc8390",
+  "status": "Success",
+  "statusMessage": "Login session token generated successfully ",
+  "sessionToken": "cbcc85c02d057187a4c6512ae0978946",
+  "accountID": "DS37591",
+  "accountName": "SUSHREE SONALIKA ROUT",
+  "exchangeList": [
+    "BSE",
+    "NSE"
+  ],
+  "orderTypeList": [
+    "L",
+    "MKT",
+    "SL"
+  ],
+  "productList": [
+    "CNC",
+    "CO",
+    "MIS"
+  ]
+}
+```
