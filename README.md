@@ -42,3 +42,24 @@ The original REST API that this SDK is based on is available online.
    [Stocknote API REST documentation](https://developers.stocknote.com/api/?python#stocknote-api-documentation)
 
 ## Using the API
+
+### Get an session token
+1. Import StocknoteAPIPythonBridge
+```
+from snapi_py_client.snapi_bridge
+```
+
+2. Create a StocknoteAPIPythonBridge object
+```python
+samco=StocknoteAPIPythonBridge()
+
+```### Get an session token
+1. Import StocknoteAPIPythonBridge
+```
+from snapi_py_client.snapi_bridge
+```
+
+2. Create a StocknoteAPIPythonBridge object
+```python
+samco=StocknoteAPIPythonBridge()
+```
