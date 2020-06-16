@@ -32,3 +32,13 @@ Also, you need the following modules:
 The modules can also be installed using `pip`
 
 ## Getting started with API
+
+### Overview
+There is a StocknoteAPIPythonBridge class in the library: create a object for StocknoteAPIPythonBridge with an instance and from this class you can create a Session token using Login function.The StockNote APIs allow the user authentication using the session token from Login API. A valid StockNote Trading Account and subscription to StockNote API Services is a pre-requisite for successful authentication.
+ 
+
+### REST Documentation
+The original REST API that this SDK is based on is available online.
+   [Stocknote API REST documentation](https://developers.stocknote.com/api/?python#stocknote-api-documentation)
+
+## Using the API
