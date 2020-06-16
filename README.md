@@ -53,7 +53,7 @@ from snapi_py_client.snapi_bridge
 ```python
 samco=StocknoteAPIPythonBridge()
 ```
-3. Get the login function so you can login with your Stocknote APi 
+3. Get the login function so you can login with your Stocknote APi by providing below parameters.
 
 ### Parameters:
 
