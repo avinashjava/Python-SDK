@@ -96,15 +96,15 @@ samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
 ### Search Equity & Derivative:
 To search equity, derivatives and commodity scrips based on user provided search symbol and exchange name.
 
-#### parameters:
+#### Parameters:
 ```python
 search_symbol_name,exchange
 ```
-#### search sample request:
+#### sample Search request:
 ```python
 print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchange=samco.EXCHANGE_NFO))
 ```
-#### search response:
+#### Search response:
 ```python
 {
  "msgId": "a9080992-71f3-47a9-9b53-b6103f4eb6ba",
@@ -154,4 +154,19 @@ print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchang
     ]
 }
 ```
+### Quote:
+Get market depth details for a specific equity scrip including but not limited to values like last trade price, previous close price, change value, change percentage, bids/asks, upper and lower circuit limits etc. This helps user with market picture of an equity scrip using which he will be able to place an order.
+
+#### Parameters:
+```python
+symbol_name,exchange
+``
+
+#### Sample Quote request:
+```python
+print(samco.get_quote(symbol_name='TCS',exchange=samco.EXCHANGE_NSE))
+```
+#### Quote Response:
+
+
 
