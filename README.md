@@ -91,6 +91,7 @@ samco=StocknoteAPIPythonBridge()
 4. Get the session token form login response and set it to `set_session_token` function.
 ```python
 samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
-this function will help to reduce the session token for other apis. This will automate the session token for other apis
+## this function will help to reduce to pass session token for other apis. This will automate the session token for other apis
 ```
+
 
