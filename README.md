@@ -291,5 +291,314 @@ print(samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHAN
   ]
 }
 ```
+### PlaceOrder:
+This API allows you to place an equity/derivative order to the exchange i.e the place order request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the PlaceOrder API returns an OrderNumber in response, and in scenarios as above the actual order status can be checked separately using the OrderStatus API call .This is for Placing CNC, MIS and NRML Orders.
+
+#### Sample PlaceOrder Request:
+```python
+print(samco.place_order(body={
+"symbolName":"RELIANCE",
+"exchange":samco.EXCHANGE_NSE,
+"transactionType":samco.TRANSACTION_TYPE_BUY,
+"orderType":samco.ORDER_TYPE_LIMIT,
+"price":"1282",
+"quantity": "15",
+"disclosedQuantity":"",
+"orderValidity":samco.VALIDITY_DAY,
+"productType":samco.PRODUCT_MIS,
+"afterMarketOrderFlag":"NO"
+}))
+```
+#### PlaceOrder Response:
+```python
+{
+  "serverTime": "16/06/20 18:03:48",
+  "msgId": "0b9e75c7-c624-4c77-bfbf-6d4e53536948",
+  "orderNumber": "200616000000350",
+  "status": "Success",
+  "statusMessage": "MIS Order request placed successfully",
+  "exchangeOrderStatus": "PENDING",
+  "orderDetails": {
+    "pendingQuantity": "15",
+    "avgExecutionPrice": "0.00",
+    "orderPlacedBy": "--",
+    "tradingSymbol": "RELIANCE-EQ",
+    "triggerPrice": "0.00",
+    "exchange": "NSE",
+    "totalQuantity": "15",
+    "transactionType": "BUY",
+    "productType": "MIS",
+    "orderType": "L",
+    "quantity": "15",
+    "filledQuantity": "0",
+    "orderPrice": "1282.0",
+    "filledPrice": "0.00",
+    "exchangeOrderNo": "1100000000015551",
+    "orderValidity": "DAY",
+    "orderTime": "16/06/2020 18:03:47"
+  }
+}
+```
+### ModifyOrder:
+User would be able to modify some attributes of an order as long as it is with open/pending status in system. For modification order identifier is mandatory. With order identifier you need to send the optional parameter(s) which needs to be modified. In case the optional parameters aren't sent, the default will be considered from the original order. Modifiable attributes include quantity, Order Type (L,MKT, SL,SL-M). This API cannot be used for modifying attributes of an executed/rejected/cancelled order. Only the attribute that needs to be modified should be sent in the request alongwith the Order Identifier.
+
+#### Sample ModifyOrder Request:
+```python
+print(samco.modify_order(order_number='200616000000350',body={"quantity": "50"}))
+```
+#### Sample ModifyOrder Response:
+```python
+{
+  "serverTime": "16/06/20 18:12:42",
+  "msgId": "c681bb4b-37c1-4e50-b3f6-60f3c43b9bef",
+  "orderNumber": "200616000000350",
+  "status": "Success",
+  "statusMessage": "Order 200616000000350 modified successfully",
+  "exchangeOrderStatus": "PENDING",
+  "orderDetails": {
+    "pendingQuantity": "50",
+    "avgExecutionPrice": "0.00",
+    "orderPlacedBy": "Dv999",
+    "tradingSymbol": "RELIANCE-EQ",
+    "triggerPrice": "0.00",
+    "exchange": "NSE",
+    "totalQuantity": "50",
+    "transactionType": "BUY",
+    "productType": "MIS",
+    "orderType": "L",
+    "quantity": "50",
+    "filledQuantity": "0",
+    "orderPrice": "1282.0",
+    "filledPrice": "0.00",
+    "exchangeOrderNo": "1100000000015551",
+    "orderValidity": "DAY",
+    "orderTime": "16/06/2020 18:12:41"
+  }
+}
+```
+### OrderBook:
+Orderbook retrieves and displays details of all orders placed by the user on a specific day. This API returns all states of the orders, namely, open, pending, rejected and executed ones.
+#### Sample OrderBook Request:
+```python
+print(samco.get_order_book())
+```
+#### Sample OrderBook Response:
+```Python
+{
+  "serverTime": "16/06/20 18:25:18",
+  "msgId": "2e2d2926-1a15-4510-b98e-c86d1f87cb7e",
+  "status": "Success",
+  "statusMessage": "Order Book details retrieved successfully",
+  "orderBookDetails": [
+    {
+      "orderNumber": "200616000000350",
+      "exchange": "NSE",
+      "tradingSymbol": "RELIANCE",
+      "transactionType": "BUY",
+      "productCode": "MIS",
+      "orderType": "L",
+      "orderPrice": "1282.00",
+      "triggerPrice": "0.00",
+      "orderValidity": "DAY",
+      "orderStatus": "Open",
+      "orderValue": "0.0",
+      "orderTime": "16-Jun-2020 18:03:47",
+      "userId": "DS37591",
+      "filledQuantity": "0",
+      "fillPrice": "0.00",
+      "averagePrice": "0.00",
+      "rejectionReason": "--",
+      "exchangeConfirmationTime": "16-Jun-2020 18:12:41",
+      "coverOrderPercentage": "0.0",
+      "orderRemarks": "--",
+      "exchangeOrderNumber": "1100000000015551",
+      "symbol": "2885_NSE",
+      "displayStrikePrice": "00.00",
+      "displayNetQuantity": "50",
+      "status": "Open",
+      "exchangeStatus": "open",
+      "expiry": "NA",
+      "pendingQuantity": "50",
+      "totalQuanity": "50",
+      "optionType": "XX",
+      "orderPlaceBy": "Dv999"
+    }
+  ]
+}
+```
+### Holdings:
+Get the details of the Stocks which client is holding. Here, you will be able to get the Client holdings which are bought under ‘CNC’ product type and are not sold yet.
+#### Sample Holdings Request:
+```python
+Print(samco.get_holding())
+```
+#### Sample Holdings Response:
+```python
+{
+    "serverTime": "16/06/20 18:31:52",
+    "msgId": "192d039e-6647-4e2f-8d97-5a91143d47a7",
+    "status": "Success",
+    "statusMessage": "User Holding details retrieved successfully",
+    "holdingSummary": {
+        "gainingTodayCount": "2",
+        "losingTodayCount": "2",
+        "totalGainAndLossAmount": "-242900000.00",
+        "portfolioValue": "176205000.00"
+    },
+    "holdingDetails": [
+        {
+            "averagePrice": "51.10",
+            "exchange": "BSE",
+            "lastTradedPrice": "0.00",
+            "previousClose": "51.10",
+            "productCode": "CNC",
+            "symbolDescription": "ASHOK LEYLAND LTD.",
+            "tradingSymbol": "ASHOKLEY",
+            "totalGainAndLoss": "-51100000.00",
+            "holdingsQuantity": "1000000",
+            "collateralQuantity": "0",
+            "holdingsValue": "0.00",
+            "sellableQuantity": "1000000"
+        },
+        {
+            "averagePrice": "1610.60",
+            "exchange": "NSE",
+            "lastTradedPrice": "1760.30",
+            "previousClose": "1610.60",
+            "productCode": "CNC",
+            "symbolDescription": "ASIAN PAINTS LIMITED",
+            "tradingSymbol": "ASIANPAINT-EQ",
+            "totalGainAndLoss": "14970000.00",
+            "holdingsQuantity": "100000",
+            "collateralQuantity": "0",
+            "holdingsValue": "176030000.00",
+            "sellableQuantity": "100000"
+        },
+        {
+            "averagePrice": "1.65",
+            "exchange": "NSE",
+            "lastTradedPrice": "1.75",
+            "previousClose": "1.65",
+            "productCode": "CNC",
+            "symbolDescription": "JAIPRAKASH ASSOCIATES LTD",
+            "tradingSymbol": "JPASSOCIAT-EQ",
+            "totalGainAndLoss": "10000.00",
+            "holdingsQuantity": "100000",
+            "collateralQuantity": "0",
+            "holdingsValue": "175000.00",
+            "sellableQuantity": "100000"
+        },
+        {
+            "averagePrice": "2067.80",
+            "exchange": "BSE",
+            "lastTradedPrice": "0.00",
+            "previousClose": "2067.80",
+            "productCode": "CNC",
+            "symbolDescription": "TATA CONSULTANCY SERVICES LTD.",
+            "tradingSymbol": "TCS",
+            "totalGainAndLoss": "-206780000.00",
+            "holdingsQuantity": "100000",
+            "collateralQuantity": "0",
+            "holdingsValue": "0.00",
+            "sellableQuantity": "100000"
+        }
+    ]
+}
+```
+### IndexIntraDayCandleData:
+
+#### Sample IndexIntraDayCandleData Request:
+```Python
+print(samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 09:23:00',to_date='2020-06-16 9:28:00'))
+```
+### Sample Response:
+```Python
+{
+  "serverTime": "16/06/20 19:09:13",
+  "msgId": "42bc5657-2d2b-49f3-8ead-1bb07a157e2a",
+  "status": "Success",
+  "statusMessage": "Index IntraDay Candle data retrieved successfully ",
+  "indexIntraDayCandleData": [
+    {
+      "dateTime": "2020-06-16 09:23:00.0",
+      "open": "33896.83",
+      "high": "33914.65",
+      "low": "33874.05",
+      "close": "33874.96",
+      "volume": "0"
+    },
+    {
+      "dateTime": "2020-06-16 09:24:00.0",
+      "open": "33878.08",
+      "high": "33915.78",
+      "low": "33874.27",
+      "close": "33909.3",
+      "volume": "0"
+    },
+    {
+      "dateTime": "2020-06-16 09:25:00.0",
+      "open": "33905.3",
+      "high": "33911.31",
+      "low": "33884.92",
+      "close": "33900.15",
+      "volume": "0"
+    },
+    {
+      "dateTime": "2020-06-16 09:26:00.0",
+      "open": "33899.02",
+      "high": "33936.46",
+      "low": "33899.02",
+      "close": "33936.46",
+      "volume": "0"
+    },
+    {
+      "dateTime": "2020-06-16 09:27:00.0",
+      "open": "33936.5",
+      "high": "33951.67",
+      "low": "33924.21",
+      "close": "33925.92",
+      "volume": "0"
+    },
+    {
+      "dateTime": "2020-06-16 09:28:00.0",
+      "open": "33925.2",
+      "high": "33928.91",
+      "low": "33886.56",
+      "close": "33890.5",
+      "volume": "0"
+    }
+  ]
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
