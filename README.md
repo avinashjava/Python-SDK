@@ -513,6 +513,80 @@ Print(samco.get_holding())
     ]
 }
 ```
+### IntraDayCandleData:
+Gets the Intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific symbol.
+The IndexIntraDayCandleData function name in python is `get_intraday_candle_data`
+#### Sample IntraDayCandleData Request:
+```Python
+print(samco.get_intraday_candle_data(symbol_name='INFY',exchange=samco.EXCHANGE_NSE, from_date='2020-06-17 10:22:00',to_date='2020-06-17 10:28:00'))
+```
+#### Sample IntraDayCandleData Response:
+```python
+{
+  "serverTime": "17/06/20 10:50:31",
+  "msgId": "c3a1ae34-8078-4f56-8a00-83f92bfa3a4b",
+  "status": "Success",
+  "statusMessage": "Intraday candle data retrieved successfully",
+  "intradayCandleData": [
+    {
+      "dateTime": "2020-06-17 10:22:00.0",
+      "open": "705.25",
+      "high": "705.3",
+      "low": "704.6",
+      "close": "704.65",
+      "volume": "7627"
+    },
+    {
+      "dateTime": "2020-06-17 10:23:00.0",
+      "open": "704.6",
+      "high": "704.7",
+      "low": "704.0",
+      "close": "704.0",
+      "volume": "16154"
+    },
+    {
+      "dateTime": "2020-06-17 10:24:00.0",
+      "open": "704.25",
+      "high": "704.6",
+      "low": "704.05",
+      "close": "704.6",
+      "volume": "13767"
+    },
+    {
+      "dateTime": "2020-06-17 10:25:00.0",
+      "open": "704.75",
+      "high": "704.75",
+      "low": "703.8",
+      "close": "703.95",
+      "volume": "13091"
+    },
+    {
+      "dateTime": "2020-06-17 10:26:00.0",
+      "open": "703.95",
+      "high": "704.3",
+      "low": "703.8",
+      "close": "704.1",
+      "volume": "7039"
+    },
+    {
+      "dateTime": "2020-06-17 10:27:00.0",
+      "open": "704.15",
+      "high": "704.15",
+      "low": "703.55",
+      "close": "703.95",
+      "volume": "17886"
+    },
+    {
+      "dateTime": "2020-06-17 10:28:00.0",
+      "open": "704.0",
+      "high": "704.95",
+      "low": "703.75",
+      "close": "704.85",
+      "volume": "17760"
+    }
+  ]
+}
+```
 ### IndexIntraDayCandleData:
 Gets the Index intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific index.
 The IndexIntraDayCandleData function name in python is `get_index_intraday_candle_data`
@@ -520,7 +594,7 @@ The IndexIntraDayCandleData function name in python is `get_index_intraday_candl
 ```Python
 print(samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 09:23:00',to_date='2020-06-16 9:28:00'))
 ```
-### Sample Response:
+#### Sample IndexIntraDayCandleData Response:
 ```Python
 {
   "serverTime": "16/06/20 19:09:13",
