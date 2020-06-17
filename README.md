@@ -295,7 +295,7 @@ print(samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHAN
 }
 ```
 ### PlaceOrder:
-This API allows you to place an equity/derivative order to the exchange i.e the place order request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the PlaceOrder API returns an OrderNumber in response, and in scenarios as above the actual order status can be checked separately using the OrderStatus API call .This is for Placing CNC, MIS and NRML Orders.
+To place an equity/derivative order to the exchange i.e the place order request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the PlaceOrder API returns an OrderNumber in response, and in scenarios as above the actual order status can be checked separately using the OrderStatus API call .This is for Placing CNC, MIS and NRML Orders.
 The PlaceOrder function name in python is `place_order`
 
 #### Sample PlaceOrder Request:
@@ -313,7 +313,7 @@ print(samco.place_order(body={
 "afterMarketOrderFlag":"NO"
 }))
 ```
-#### PlaceOrder Response:
+#### sample PlaceOrder Response:
 ```python
 {
   "serverTime": "16/06/20 18:03:48",
@@ -340,6 +340,106 @@ print(samco.place_order(body={
     "exchangeOrderNo": "1100000000015551",
     "orderValidity": "DAY",
     "orderTime": "16/06/2020 18:03:47"
+  }
+}
+```
+### PlaceOrderBO:
+To place an equity/derivative order to the exchange i.e the place order BO request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the placeOrderBO returns an orderNumber in response, and in scenarios as above the actual order status can be checked separately using the orderStatus API call. This is for Placing BO Orders.
+The PlaceOrderBO function name in python is `place_order_bo`
+#### Sample PlaceOrderBO Request:
+```python
+print(samco.place_order_bo(body={
+"symbolName":"TCS",
+"exchange":"BSE",
+"transactionType":samco.TRANSACTION_TYPE_BUY,
+"orderType":samco.ORDER_TYPE_LIMIT,
+"quantity": "10",
+"disclosedQuantity":"1",
+"price":"2021",
+"priceType":"LTP",
+"valueType":"Absolute",
+"orderValidity":samco.VALIDITY_DAY,
+"productType":samco.PRODUCT_BO,
+"squareOffValue":"15.00",
+"stopLossValue":"5.00",
+"trailingStopLoss":"5"
+}))
+```
+#### Sample PlaceOrderBO Response:
+```python
+{
+  "serverTime": "17/06/20 18:29:39",
+  "msgId": "3dde806a-17b3-43ae-b1c1-58691f640a10",
+  "orderNumber": "200617000000375",
+  "status": "Success",
+  "statusMessage": "Bracket Order request placed successfully",
+  "exchangeOrderStatus": "EXECUTED",
+  "orderDetails": {
+    "pendingQuantity": "0",
+    "avgExecutionPrice": "2014.95",
+    "orderPlacedBy": "--",
+    "tradingSymbol": "TCS",
+    "triggerPrice": "0.00",
+    "exchange": "BSE",
+    "totalQuantity": "10",
+    "transactionType": "BUY",
+    "productType": "BO",
+    "orderType": "L",
+    "quantity": "10",
+    "filledQuantity": "10",
+    "orderPrice": "2021.0",
+    "filledPrice": "2014.95",
+    "exchangeOrderNo": "1592387449638000140",
+    "orderValidity": "DAY",
+    "orderTime": "17/06/2020 18:29:38"
+  }
+}
+```
+### PlaceOrderCO:
+To place an equity/derivative order to the exchange i.e the place order CO request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the placeOrderCO returns an orderNumber in response, and in scenarios as above the actual order status can be checked separately using the orderStatus API call. This is for Placing CO Orders.
+The PlaceOrderCO function name in python is `place_order_co`
+#### Sample PlaceOrderCO Request:
+```Python
+print(samco.place_order_co(body={
+"symbolName":"INFY",
+"exchange":samco.EXCHANGE_NSE,
+"transactionType":samco.TRANSACTION_TYPE_BUY,
+"orderType":samco.ORDER_TYPE_LIMIT,
+"price":"679",
+"quantity": "15",
+"disclosedQuantity":"",
+"orderValidity":samco.VALIDITY_DAY,
+"productType":samco.PRODUCT_CO,
+"afterMarketOrderFlag":"NO",
+"triggerPrice":"646"}))
+```
+#### Sample PlaceOrderCO Response:
+```Python
+{
+  "serverTime": "17/06/20 16:37:18",
+  "msgId": "9bd0ab52-f6a0-4ec6-9813-aa707795aa87",
+  "orderNumber": "200617000000181",
+  "status": "Success",
+  "statusMessage": "CO Order request placed successfully",
+  "exchangeOrderStatus": "EXECUTED",
+  "orderDetails": {
+    "pendingQuantity": "0",
+    "avgExecutionPrice": "679.00",
+    "orderPlacedBy": "--",
+    "tradingSymbol": "INFY-EQ",
+    "triggerPrice": "646.00",
+    "exchange": "NSE",
+    "totalQuantity": "15",
+    "transactionType": "BUY",
+    "productType": "CO",
+    "orderType": "L",
+    "quantity": "15",
+    "filledQuantity": "15",
+    "orderPrice": "679.0",
+    "filledPrice": "679.00",
+    "exchangeOrderNo": "1100000000026975",
+    "orderValidity": "DAY",
+    "orderTime": "17/06/2020 16:37:17"
   }
 }
 ```
@@ -431,6 +531,160 @@ print(samco.get_order_book())
       "orderPlaceBy": "Dv999"
     }
   ]
+}
+```
+### TriggerOrders:
+To get the trigger order numbers in case of BO and CO orders so that their attribute values can be modified for BO orders, it will give the order identifiers. For Stop loss leg and target leg. Similarly for CO orders, it will return order identifier of stop loss leg only. Using the order identifier, the user would be able to modify the order attributes using the modifyOrder API. Refer modifyOrder API documentation for the parameters details.
+The TriggerOrders function name in python is `get_trigger_order_numbers`
+
+#### Sample TriggerOrders Request:
+```python
+print(samco.get_trigger_order_numbers(order_number="200617000000378"))
+```
+#### Sample TriggerOrders Response:
+```python
+{
+    "serverTime": "17/06/20 18:40:00",
+    "msgId": "ccff75e1-9d79-4b54-b4cb-bc48e080758f",
+    "status": "Success",
+    "statusMessage": "SubOrder details retrieved successfully.",
+    "triggerOrders": [
+        {
+            "targetOrderNo": "200617000000380",
+            "orderStatus": "Complete",
+            "orderPrice": "2010.00",
+            "triggerPrice": "0.00"         
+        },
+        {
+            "targetOrderNo": "200617000000379",
+            "orderStatus": "Cancelled",
+            "orderPrice": "2029.95",
+            "triggerPrice": "0.00"
+        }
+    ]
+}
+```
+### OrderStatus:
+Get status of an order placed previously. This API returns all states of the orders,but not limited to open, pending, and partially filled ones.
+The OrderStatus function name in python is `get_order_status`
+#### Sample OrderStatus Request:
+```python
+print(samco.get_order_status(order_number="200617000000378"))
+```
+#### Sample OrderStatus Response:
+```python
+{
+    "serverTime": "17/06/20 20:54:53",
+    "msgId": "d45688d9-31c0-4195-90ba-5474e7f50873",
+    "orderNumber": "200617000000378",
+    "orderStatus": "EXECUTED",
+    "orderDetails": {
+        "pendingQuantity": "0",
+        "avgExecutionPrice": "2014.95",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "TCS",
+        "triggerPrice": "0.00",
+        "exchange": "BSE",
+        "totalQuantity": "10",
+        "transactionType": "BUY",
+        "productType": "BO",
+        "orderType": "L",
+        "quantity": "10",
+        "filledQuantity": "10",
+        "orderPrice": "2021.0",
+        "filledPrice": "2014.95",
+        "exchangeOrderNo": "1592387449638000143",
+        "orderValidity": "DAY",
+        "orderTime": "17/06/2020 18:38:37"
+    }
+}
+```
+### TradeBook:
+Details of all successfully executed orders placed by the user.
+The TradeBook function name in python is `get_order_status`
+#### Sample TradeBook Request:
+```python
+python(samco.get_trade_book())
+```
+#### Sample TradeBook Response:
+```python
+{
+    "serverTime": "17/06/20 21:01:25",
+    "msgId": "c4b7ec88-32e5-4e1f-a56b-7186f6933d79",
+    "status": "Success",
+    "statusMessage": "Request Successfull",
+    "tradeBookDetails": [
+        {
+            "orderNumber": "200617000000380",
+            "exchange": "BSE",
+            "tradingSymbol": "TCS",
+            "transactionType": "SELL",
+            "productCode": "BO",
+            "orderType": "L",
+            "orderPrice": "2010.00",
+            "quantity": "10",
+            "orderValidity": "DAY",
+            "orderTime": "06:39:50 PM",
+            "filledQuantity": "10",
+            "exchangeOrderNumber": "1592387449638000145",
+            "tradeNumber": "25400",
+            "tradePrice": "2010.00",
+            "tradeDate": "17JUN2020",
+            "tradeTime": "06:39:49 PM",
+            "strikePrice": "0.00",
+            "optionType": "XX",
+            "expiry": "NA"
+        }
+    ]
+}
+```
+### Postions:
+Get position details of the user (The details of equity, derivative, commodity, currency borrowed or owned by the user).
+The Postions function name in python is `get_holding`
+#### Sample Postions Request:
+```Python
+print(samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY))
+```
+#### Sample Postions Response:
+```python
+{
+    "serverTime": "17/06/20 21:06:10",
+    "msgId": "36a2cb48-2ce8-48e4-ac0a-90e68c6d26f1",
+    "status": "Success",
+    "statusMessage": "User Positions details retrieved successfully",
+    "positionDetails": [
+        {
+            "averagePrice": "-4.95",
+            "exchange": "BSE",
+            "markToMarketPrice": "-99.00",
+            "lastTradedPrice": "2,010.00",
+            "previousClose": "2067.80",
+            "productCode": "BO",
+            "tradingSymbol": "TCS",
+            "calculatedNetQuantity": "0.0",
+            "averageBuyPrice": "2014.95",
+            "averageSellPrice": "2010.00",
+            "boardLotQuantity": "1",
+            "boughtPrice": "40299.00",
+            "buyQuantity": "20",
+            "carryForwardQuantity": "0",
+            "carryForwardValue": "0.00",
+            "multiplier": "1",
+            "netPositionValue": "-99.00",
+            "netQuantity": "0",
+            "netValue": "-99.00",
+            "positionType": "DAY",
+            "positionConversions": [
+                "CNC",
+                "NRML"
+            ],
+            "soldValue": "40200.00",
+            "transactionType": "BUY",
+            "realizedGainAndLoss": "-99.00",
+            "unrealizedGainAndLoss": "0.00",
+            "companyName": "TATA CONSULTANCY SERVICES LTD."
+        }
+    ]
 }
 ```
 ### Holdings:
@@ -648,6 +902,97 @@ print(samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-
       "high": "33928.91",
       "low": "33886.56",
       "close": "33890.5",
+      "volume": "0"
+    }
+  ]
+}
+```
+### HistoricalCandleData:
+Gets the historical candle data such as Open, high, low, close, last traded price and volume within specific dates for a specific symbol. From date is mandatory. End date is optional and defaults to Today.
+The HistoricalCandleData function name in python is `get_index_intraday_candle_data`
+
+#### Sample HistoricalCandleData Request:
+```python
+print(samco.get_historical_candle_data(symbol_name='BANKNIFTY18JUN2018500PE',exchange=samco.EXCHANGE_NFO, from_date='2020-06-14',to_date='2020-06-17'))
+```
+#### Sample HistoricalCandleData respone:
+```python
+{
+  "serverTime": "17/06/20 11:14:06",
+  "msgId": "97cdca8f-81f9-4a88-8da6-99b471e82803",
+  "status": "Success",
+  "statusMessage": "Historical candle data retrieved successfully",
+  "historicalCandleData": [
+    {
+      "date": "2020-06-15",
+      "open": "60.0",
+      "high": "136.45",
+      "low": "56.2",
+      "close": "78.5",
+      "ltp": "78.5",
+      "volume": "9302660"
+    },
+    {
+      "date": "2020-06-16",
+      "open": "38.75",
+      "high": "206.85",
+      "low": "13.0",
+      "close": "38.5",
+      "ltp": "38.5",
+      "volume": "7792900"
+    }
+  ]
+}
+```
+### IndexHistoricalCandleData:
+Gets the Index historical candle data such as Open, high, low, close, last traded price and volume within specific dates for a specific index. From date is mandatory. End date is optional and defaults to Today.
+The IndexHistoricalCandleData function name in python is `get_index_candle_data`
+#### Sample IndexHistoricalCandleData Request;
+```python
+print(samco.get_index_candle_data(index_name='NIFTY 200', from_date='2019-05-24',to_date='2019-05-29'))
+```
+#### Sample IndexHistoricalCandleData Response:
+```python
+{
+  "serverTime": "17/06/20 11:39:11",
+  "msgId": "bb015c56-74e5-401b-bfe0-e2c9c415d088",
+  "status": "Success",
+  "statusMessage": "Index HistoricalCandle data retrieved successfully ",
+  "indexCandleData": [
+    {
+      "date": "2019-05-24",
+      "open": "6067.65",
+      "high": "6134.4",
+      "low": "6029.9",
+      "close": "6129.8",
+      "ltp": "6129.8",
+      "volume": "0"
+    },
+    {
+      "date": "2019-05-27",
+      "open": "6134.35",
+      "high": "6189.0",
+      "low": "6114.5",
+      "close": "6177.15",
+      "ltp": "6177.15",
+      "volume": "0"
+    },
+    {
+      "date": "2019-05-28",
+      "open": "6195.7",
+      "high": "6195.7",
+      "low": "6151.25",
+      "close": "6181.35",
+      "ltp": "6181.35",
+      "volume": "0"
+    },
+    {
+      "date": "2019-05-29",
+      "open": "6172.55",
+      "high": "6178.85",
+      "low": "6132.0",
+      "close": "6143.8",
+      "ltp": "6143.8",
       "volume": "0"
     }
   ]
