@@ -95,7 +95,7 @@ samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
 ```
 ### Search Equity & Derivative:
 To search equity, derivatives and commodity scrips based on user provided search symbol and exchange name. 
-The search function name is `search_equity_derivative`
+The search function name in python is `search_equity_derivative`
 
 #### Parameters:
 ```python
@@ -157,7 +157,7 @@ print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchang
 ```
 ### Quote:
 Get market depth details for a specific equity scrip including but not limited to values like last trade price, previous close price, change value, change percentage, bids/asks, upper and lower circuit limits etc. This helps user with market picture of an equity scrip using which he will be able to place an order.
-The Quote function name is `get_quote`
+The Quote function name in python is `get_quote`
 
 #### Parameters:
 ```python
@@ -257,7 +257,7 @@ print(samco.get_quote(symbol_name='BANKNIFTY18JUN2017900PE',exchange=samco.EXCHA
 ```
 ### OptionChain:
 To search OptionChain for equity, derivatives and commodity scrips based on user provided search symbol and exchange name.
-The OptionChain function name is `get_option_chain`
+The OptionChain function name in python is `get_option_chain`
 
 #### Parameters:
 ```python
@@ -296,7 +296,7 @@ print(samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHAN
 ```
 ### PlaceOrder:
 This API allows you to place an equity/derivative order to the exchange i.e the place order request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the PlaceOrder API returns an OrderNumber in response, and in scenarios as above the actual order status can be checked separately using the OrderStatus API call .This is for Placing CNC, MIS and NRML Orders.
-The PlaceOrder function name is `place_order`
+The PlaceOrder function name in python is `place_order`
 
 #### Sample PlaceOrder Request:
 ```python
@@ -345,7 +345,7 @@ print(samco.place_order(body={
 ```
 ### ModifyOrder:
 User would be able to modify some attributes of an order as long as it is with open/pending status in system. For modification order identifier is mandatory. With order identifier you need to send the optional parameter(s) which needs to be modified. In case the optional parameters aren't sent, the default will be considered from the original order. Modifiable attributes include quantity, Order Type (L,MKT, SL,SL-M). This API cannot be used for modifying attributes of an executed/rejected/cancelled order. Only the attribute that needs to be modified should be sent in the request alongwith the Order Identifier.
-The ModifyOrder function name is `modify_order`
+The ModifyOrder function name in python is `modify_order`
 
 #### Sample ModifyOrder Request:
 ```python
@@ -383,7 +383,7 @@ print(samco.modify_order(order_number='200616000000350',body={"quantity": "50"})
 ```
 ### OrderBook:
 Orderbook retrieves and displays details of all orders placed by the user on a specific day. This API returns all states of the orders, namely, open, pending, rejected and executed ones.
-The OrderBook function name is `get_order_book`
+The OrderBook function name in python is `get_order_book`
 
 #### Sample OrderBook Request:
 ```python
@@ -435,7 +435,7 @@ print(samco.get_order_book())
 ```
 ### Holdings:
 Get the details of the Stocks which client is holding. Here, you will be able to get the Client holdings which are bought under ‘CNC’ product type and are not sold yet.
-The Holdings function name is `get_holding`
+The Holdings function name in python is `get_holding`
 #### Sample Holdings Request:
 ```python
 Print(samco.get_holding())
@@ -515,7 +515,7 @@ Print(samco.get_holding())
 ```
 ### IndexIntraDayCandleData:
 Gets the Index intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific index.
-The IndexIntraDayCandleData function name is `get_index_intraday_candle_data`
+The IndexIntraDayCandleData function name in python is `get_index_intraday_candle_data`
 #### Sample IndexIntraDayCandleData Request:
 ```Python
 print(samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 09:23:00',to_date='2020-06-16 9:28:00'))
