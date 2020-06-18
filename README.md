@@ -566,7 +566,7 @@ print(samco.get_trigger_order_numbers(order_number="200617000000378"))
 ```
 ### OrderStatus:
 Get status of an order placed previously. This API returns all states of the orders,but not limited to open, pending, and partially filled ones.
-The OrderStatus function name in python is `get_trade_book`
+The OrderStatus function name in python is `get_order_status`
 #### Sample OrderStatus Request:
 ```python
 print(samco.get_order_status(order_number="200617000000378"))
