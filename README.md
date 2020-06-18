@@ -601,7 +601,7 @@ print(samco.get_order_status(order_number="200617000000378"))
 ```
 ### TradeBook:
 Details of all successfully executed orders placed by the user.
-The TradeBook function name in python is `get_order_status`
+The TradeBook function name in python is `get_trade_book`
 #### Sample TradeBook Request:
 ```python
 python(samco.get_trade_book())
