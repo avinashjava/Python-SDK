@@ -566,7 +566,7 @@ print(samco.get_trigger_order_numbers(order_number="200617000000378"))
 ```
 ### OrderStatus:
 Get status of an order placed previously. This API returns all states of the orders,but not limited to open, pending, and partially filled ones.
-The OrderStatus function name in python is `get_order_status`
+The OrderStatus function name in python is `get_trade_book`
 #### Sample OrderStatus Request:
 ```python
 print(samco.get_order_status(order_number="200617000000378"))
@@ -640,7 +640,7 @@ python(samco.get_trade_book())
 ```
 ### Postions:
 Get position details of the user (The details of equity, derivative, commodity, currency borrowed or owned by the user).
-The Postions function name in python is `get_holding`
+The Postions function name in python is `get_positions_data`
 #### Sample Postions Request:
 ```Python
 print(samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY))
