@@ -59,7 +59,8 @@ samco=StocknoteAPIPythonBridge()
     userId, password, yob
 ## Login Sample Request:
   ```python
-  print(samco.login(body={"userId":'*****','password':'*****','yob':'****'}))
+  login=samco.login(body={"userId":'*****','password':'*****','yob':'****'})
+  print("Login details",login)
   ##this will return a user details and generated session token
   ```
  ## Login Response:
@@ -101,11 +102,11 @@ The search function name in python is `search_equity_derivative()`
 ```python
 search_symbol_name,exchange
 ```
-#### sample Search Request:
+#### Sample Search Request:
 ```python
-print(samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchange=samco.EXCHANGE_NFO))
+samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchange=samco.EXCHANGE_NFO)
 ```
-#### Search Response:
+#### Sample Search Response:
 ```python
 {
  "msgId": "a9080992-71f3-47a9-9b53-b6103f4eb6ba",
@@ -165,9 +166,9 @@ symbol_name,exchange
 ```
 #### Sample Quote request:
 ```python
-print(samco.get_quote(symbol_name='BANKNIFTY18JUN2017900PE',exchange=samco.EXCHANGE_NFO))
+samco.get_quote(symbol_name='BANKNIFTY18JUN2017900PE',exchange=samco.EXCHANGE_NFO)
 ```
-#### Quote Response:
+#### Sample Quote Response:
 ```python
 {
     "serverTime": "16/06/20 14:06:12",
@@ -265,9 +266,9 @@ search_symbol_name,exchange,expiry_date,strike_price,option_type
 ```
 #### Sample OptionChain Request:
 ```python
-print(samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHANGE_NFO,expiry_date='2020-07-30',strike_price='1961.40',option_type='PE'))
+samco.get_option_chain(search_symbol_name='Reliance',exchange=samco.EXCHANGE_NFO,expiry_date='2020-07-30',strike_price='1961.40',option_type='PE')
 ```
-#### OptionChain Response:
+#### Sample OptionChain Response:
 ```python
 {
   "serverTime": "16/06/20 14:48:53",
@@ -299,7 +300,7 @@ Gets the user cash balances, available margin for trading in equity and commodit
 The UserLimits function name in python is `get_limits()`
 #### Sample UserLimit Request:
 ```python
-print(samco.get_limits())
+samco.get_limits()
 ```
 #### Sample UserLimit Response:
 ```python
@@ -330,7 +331,7 @@ The PlaceOrder function name in python is `place_order()`
 
 #### Sample PlaceOrder Request:
 ```python
-print(samco.place_order(body={
+samco.place_order(body={
 "symbolName":"RELIANCE",
 "exchange":samco.EXCHANGE_NSE,
 "transactionType":samco.TRANSACTION_TYPE_BUY,
@@ -341,7 +342,7 @@ print(samco.place_order(body={
 "orderValidity":samco.VALIDITY_DAY,
 "productType":samco.PRODUCT_MIS,
 "afterMarketOrderFlag":"NO"
-}))
+})
 ```
 #### sample PlaceOrder Response:
 ```python
@@ -629,10 +630,10 @@ print(samco.get_order_status(order_number="200617000000378"))
     }
 }
 ```
-### CancleOrder:
+### CancelOrder:
 An order which is open or pending in system can be cancelled. In other words, cancellation cannot be initiated for already Executed, Rejected orders.This is for CNC, MIS and NRML Orders.
 The CancleOrder function name in python is `cancel_order()`
-#### Sample CancleOrder Request:
+#### Sample CancelOrder Request:
 ```python
 print(samco.cancel_order(order_number='200616000000350'))
 ```
@@ -646,12 +647,12 @@ print(samco.cancel_order(order_number='200616000000350'))
   "statusMessage" : "Order cancelled successfully"
 }
 ```
-### CancleOrderCO:
+### CancelOrderCO:
 For Cancellation/exit of CO orders pass main leg Order number. If main leg is in Open/Pending state that order will be cancelled.
 If the main leg is executed and the sublegs are created and in open/Trigger pending state, the order will be exited.
 If the main leg is executed and if Stop loss is hit, API will return error message "SubOrder is in Executed status. Cannot exit/cancel such orders.
 The CancleOrder function name in python is `cancel_order_co()`
-#### Sample CancleOrderCO Request:
+#### Sample CancelOrderCO Request:
 ```python
 print(samco.cancel_order_co(order_number='200617000000181'))
 ```
@@ -665,16 +666,16 @@ print(samco.cancel_order_co(order_number='200617000000181'))
   "statusMessage" : "Cover Order 200617000000181 exited successfully"
 }
 ```
-### CancleOrderBO:
+### CancelOrderBO:
 For Cancellation/exit of BO orders pass main leg Order number. If main leg is in Open/Pending state that order will be cancelled.
 If the main leg is executed and the sublegs are created and in open/Trigger pending state, the order will be exited.
 If the main leg is executed and if either of Stop loss or target is hit, API will return error message "SubOrder is in Executed status. Cannot exit/cancel such orders."
 The CancleOrder function name in python is `cancel_order_bo()`
-#### Sample CancleOrderCO Request:
+#### Sample CancelOrderBO Request:
 ```python
 print(samco.cancel_order_bo(order_number='200617000000375'))
 ```
-#### sample CancelOrderCO Response:
+#### sample CancelOrderBO Response:
 ```python
 {
   "serverTime" : "16/06/20 14:50:36",
@@ -689,7 +690,7 @@ Details of all successfully executed orders placed by the user.
 The TradeBook function name in python is `get_trade_book()`
 #### Sample TradeBook Request:
 ```python
-python(samco.get_trade_book())
+print(samco.get_trade_book())
 ```
 #### Sample TradeBook Response:
 ```python
@@ -723,14 +724,14 @@ python(samco.get_trade_book())
     ]
 }
 ```
-### Postions:
+### Positions:
 Get position details of the user (The details of equity, derivative, commodity, currency borrowed or owned by the user).
 The Postions function name in python is `get_positions_data()`
-#### Sample Postions Request:
+#### Sample Positions Request:
 ```Python
 print(samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY))
 ```
-#### Sample Postions Response:
+#### Sample Positions Response:
 ```python
 {
     "serverTime": "17/06/20 21:06:10",
@@ -772,10 +773,10 @@ print(samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY))
     ]
 }
 ```
-### PostionConversion:
+### PositionConversion:
 Convert an existing position of a margin product to a different margin product type. All or a subset of an existing position quantity can be converted to a different product type.The available margin product types are MARGIN_INTRADAY_SQUAREOFF(MIS), CASHNCARRY(CNC), NORMAL(NRML).
 The PostionConversion function name in python is `convert_position()`
-##### sample PostionConverstion Request:
+##### Sample PositionConverstion Request:
 ```python
 print(samco.convert_position(body={ 
   "symbolName":"TSC",
@@ -788,7 +789,7 @@ print(samco.convert_position(body={
    "netQuantity":"2"
 }))
 ```
-#### samcple PostionConverstion Response:
+#### Sample PostionConverstion Response:
 ```python
 {
   "serverTime" : "17x/06/20 15:06:42",
@@ -1110,13 +1111,11 @@ print(samco.get_index_candle_data(index_name='NIFTY 200', from_date='2019-05-24'
 }
 ```
 ### StreamingData:
-StockNote API platform provides the Broadcast API, as the most effective way to receive market data for instruments across all exchanges during live market hours. The API provides continuous streaming data of market data based on user request, and primarily consists of fields such as 5 levels of bid/offer market depth data etc.
+StockNote API platform provides the Broadcast API, as the most effective way to receive quote data for instruments across all exchanges during live market hours. The API provides continuous streaming data of quote based on user request, and primarily consists of fields such as last traded price, open, high, low, close, last traded quantity, last traded volume, last traded time etc.
 
-This uses WebSocket protocol to establish a dedicated TCP connection after an HTTP handshake to receive streaming quotes and thereby provides seamless streaming of market data. You need to use a WebSocket client to connect to our broadcast API. If you have already subscribed to our StockNote API services, you will be able to access broadcast API too.
+The API uses WebSocket protocol to establish a dedicated TCP connection after an HTTP handshake to receive streaming quotes and thereby provides seamless streaming of quote data. You need to use a WebSocket client to connect to our broadcast API. If you have already subscribed to our StockNote API services, you will be able to access broadcast API too.
 
-#### streaming:
-
-#### sample Streaming Request:
+#### Sample Streaming Request:
 ```python
 value=[{"symbol":"-53"},{"symbol":"1143_CDS"},{"symbol":"1270_NSE"},{"symbol":"10604_NSE"},{"symbol":"11195_NSE"}]
 samco.set_streaming_data(value)
@@ -1135,11 +1134,11 @@ Message Arrived:{"response":{"data":{"aPr":"0.00","aSz":"0","avgPr":"0.00","bPr"
 Logging out user from the application.
 The Logout function name in python is `logout()`
 
-#### samcple Logout Request:
+#### Sample Logout Request:
 ```python
 print(samco.logout())
 ```
-#### sample Logout Response:
+#### Sample Logout Response:
 ```python
 {
   "serverTime" : "17/06/20 12:27:52",
