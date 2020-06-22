@@ -58,7 +58,7 @@ samco=StocknoteAPIPythonBridge()
 
 ## Parameters:
 ```
-userId*,password*,yob*
+userId,password,yob
 ```
 ## Login Sample Request:
   ```python
@@ -103,7 +103,7 @@ The search function name in python is `search_equity_derivative()`
 
 #### Parameters:
 ```python
-search_symbol_name*,exchange
+search_symbol_name,exchange
 ```
 #### Sample Search Request:
 ```python
@@ -332,6 +332,11 @@ samco.get_limits()
 To place an equity/derivative order to the exchange i.e the place order request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the PlaceOrder API returns an OrderNumber in response, and in scenarios as above the actual order status can be checked separately using the OrderStatus API call .This is for Placing CNC, MIS and NRML Orders.
 The PlaceOrder function name in python is `place_order()`
 
+#### Parameters:
+```python
+symbol_name,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,marketProtection
+```
+
 #### Sample PlaceOrder Request:
 ```python
 samco.place_order(body={
@@ -380,6 +385,11 @@ samco.place_order(body={
 ### PlaceOrderBO:
 To place an equity/derivative order to the exchange i.e the place order BO request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the placeOrderBO returns an orderNumber in response, and in scenarios as above the actual order status can be checked separately using the orderStatus API call. This is for Placing BO Orders.
 The PlaceOrderBO function name in python is `place_order_bo()`
+
+#### Parameters:
+```python
+symbol_name,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,trailingStopLoss,stopLossValue,squareOffValue,valueType,priceType,
+```
 #### Sample PlaceOrderBO Request:
 ```python
 samco.place_order_bo(body={
@@ -432,6 +442,11 @@ samco.place_order_bo(body={
 ### PlaceOrderCO:
 To place an equity/derivative order to the exchange i.e the place order CO request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. To be precise, under normal scenarios, the whole flow of order execution starting with order placement, routing to OMS and transfer to the exchange, order execution, and confirmation from exchange happen real time. But due to various reasons like market hours, exchange related checks etc. This may not happen instantly. So when an order is successfully placed the placeOrderCO returns an orderNumber in response, and in scenarios as above the actual order status can be checked separately using the orderStatus API call. This is for Placing CO Orders.
 The PlaceOrderCO function name in python is `place_order_co()`
+
+#### Parameters:
+```python
+symbol_name,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,marketProtection,triggerPrice
+```
 #### Sample PlaceOrderCO Request:
 ```Python
 samco.place_order_co(body={
@@ -480,6 +495,11 @@ samco.place_order_co(body={
 ### ModifyOrder:
 User would be able to modify some attributes of an order as long as it is with open/pending status in system. For modification order identifier is mandatory. With order identifier you need to send the optional parameter(s) which needs to be modified. In case the optional parameters aren't sent, the default will be considered from the original order. Modifiable attributes include quantity, Order Type (L,MKT, SL,SL-M). This API cannot be used for modifying attributes of an executed/rejected/cancelled order. Only the attribute that needs to be modified should be sent in the request alongwith the Order Identifier.
 The ModifyOrder function name in python is `modify_order()`
+
+#### Parameters:
+```python
+orderType,quantity,disclosedQuantity,orderValidity,price,triggerPrice,parentOrderId,marketProtection
+```
 
 #### Sample ModifyOrder Request:
 ```python
@@ -571,6 +591,11 @@ samco.get_order_book()
 To get the trigger order numbers in case of BO and CO orders so that their attribute values can be modified for BO orders, it will give the order identifiers. For Stop loss leg and target leg. Similarly for CO orders, it will return order identifier of stop loss leg only. Using the order identifier, the user would be able to modify the order attributes using the modifyOrder API. Refer modifyOrder API documentation for the parameters details.
 The TriggerOrders function name in python is `get_trigger_order_numbers()`
 
+#### Parameters:
+```python
+order_number
+```
+
 #### Sample TriggerOrders Request:
 ```python
 samco.get_trigger_order_numbers(order_number="200617000000378")
@@ -601,6 +626,11 @@ samco.get_trigger_order_numbers(order_number="200617000000378")
 ### OrderStatus:
 Get status of an order placed previously. This API returns all states of the orders,but not limited to open, pending, and partially filled ones.
 The OrderStatus function name in python is `get_order_status`
+
+#### Parameters:
+```python
+order_number
+```
 #### Sample OrderStatus Request:
 ```python
 samco.get_order_status(order_number="200617000000378")
@@ -636,6 +666,11 @@ samco.get_order_status(order_number="200617000000378")
 ### CancelOrder:
 An order which is open or pending in system can be cancelled. In other words, cancellation cannot be initiated for already Executed, Rejected orders.This is for CNC, MIS and NRML Orders.
 The CancleOrder function name in python is `cancel_order()`
+
+#### Parameters:
+```python
+order_number
+```
 #### Sample CancelOrder Request:
 ```python
 samco.cancel_order(order_number='200616000000350')
@@ -655,6 +690,10 @@ For Cancellation/exit of CO orders pass main leg Order number. If main leg is in
 If the main leg is executed and the sublegs are created and in open/Trigger pending state, the order will be exited.
 If the main leg is executed and if Stop loss is hit, API will return error message "SubOrder is in Executed status. Cannot exit/cancel such orders.
 The CancleOrder function name in python is `cancel_order_co()`
+#### Parameters:
+```python
+order_number
+```
 #### Sample CancelOrderCO Request:
 ```python
 samco.cancel_order_co(order_number='200617000000181')
@@ -674,6 +713,10 @@ For Cancellation/exit of BO orders pass main leg Order number. If main leg is in
 If the main leg is executed and the sublegs are created and in open/Trigger pending state, the order will be exited.
 If the main leg is executed and if either of Stop loss or target is hit, API will return error message "SubOrder is in Executed status. Cannot exit/cancel such orders."
 The CancleOrder function name in python is `cancel_order_bo()`
+#### Parameters:
+```python
+order_number
+```
 #### Sample CancelOrderBO Request:
 ```python
 samco.cancel_order_bo(order_number='200617000000375')
@@ -730,6 +773,10 @@ samco.get_trade_book()
 ### Positions:
 Get position details of the user (The details of equity, derivative, commodity, currency borrowed or owned by the user).
 The Postions function name in python is `get_positions_data()`
+#### Parameters:
+```python
+position_type
+```
 #### Sample Positions Request:
 ```Python
 samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY)
@@ -779,6 +826,11 @@ samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY)
 ### PositionConversion:
 Convert an existing position of a margin product to a different margin product type. All or a subset of an existing position quantity can be converted to a different product type.The available margin product types are MARGIN_INTRADAY_SQUAREOFF(MIS), CASHNCARRY(CNC), NORMAL(NRML).
 The PostionConversion function name in python is `convert_position()`
+
+#### Parameters:
+```python
+symbolName,exchange,transactionType,positionType,quantityToConvert,fromProductType,toProductType,netQuantity
+```
 ##### Sample PositionConverstion Request:
 ```python
 samco.convert_position(body={ 
@@ -885,6 +937,11 @@ samco.get_holding()
 ### IntraDayCandleData:
 Gets the Intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific symbol.
 The IndexIntraDayCandleData function name in python is `get_intraday_candle_data()`
+
+#### Parameters:
+```python
+symbol_name,exchange,from_date,to_date
+```
 #### Sample IntraDayCandleData Request:
 ```Python
 samco.get_intraday_candle_data(symbol_name='INFY',exchange=samco.EXCHANGE_NSE, from_date='2020-06-17 10:22:00',to_date='2020-06-17 10:28:00')
@@ -959,6 +1016,10 @@ samco.get_intraday_candle_data(symbol_name='INFY',exchange=samco.EXCHANGE_NSE, f
 ### IndexIntraDayCandleData:
 Gets the Index intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific index.
 The IndexIntraDayCandleData function name in python is `get_index_intraday_candle_data()`
+#### Parameters:
+```python
+index_name,from_date,to_date
+```
 #### Sample IndexIntraDayCandleData Request:
 ```Python
 samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 09:23:00',to_date='2020-06-16 9:28:00')
@@ -1025,6 +1086,10 @@ samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 
 ### HistoricalCandleData:
 Gets the historical candle data such as Open, high, low, close, last traded price and volume within specific dates for a specific symbol. From date is mandatory. End date is optional and defaults to Today.
 The HistoricalCandleData function name in python is `get_index_intraday_candle_data()`
+#### Parameters:
+```python
+symbol_name,exchange,from_date,to_date
+```
 
 #### Sample HistoricalCandleData Request:
 ```python
@@ -1062,6 +1127,11 @@ samco.get_historical_candle_data(symbol_name='BANKNIFTY18JUN2018500PE',exchange=
 ### IndexHistoricalCandleData:
 Gets the Index historical candle data such as Open, high, low, close, last traded price and volume within specific dates for a specific index. From date is mandatory. End date is optional and defaults to Today.
 The IndexHistoricalCandleData function name in python is `get_index_candle_data()`
+
+#### Parameters:
+```python
+index_name,from_date,to_date
+```
 #### Sample IndexHistoricalCandleData Request;
 ```python
 samco.get_index_candle_data(index_name='NIFTY 200', from_date='2019-05-24',to_date='2019-05-29')
