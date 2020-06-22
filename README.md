@@ -47,7 +47,7 @@ The original REST API that this SDK is based on is available online.
 ### Get an session token
 1. Import StocknoteAPIPythonBridge
 ```
-from snapi_py_client.snapi_bridge
+from snapi_py_client.snapi_bridge import StocknoteAPIPythonBridge
 ```
 
 2. Create a StocknoteAPIPythonBridge object
@@ -57,7 +57,7 @@ samco=StocknoteAPIPythonBridge()
 3. Get the login function so you can login with your Stocknote APi by providing below parameters.
 
 ## Parameters:
-    userId, password, yob
+    `userId`,` password`,` yob`
 ## Login Sample Request:
   ```python
   login=samco.login(body={"userId":'*****','password':'*****','yob':'****'})
