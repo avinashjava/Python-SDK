@@ -34,10 +34,9 @@ The modules can also be installed using `pip`
 ## Getting started with API
 
 ### Overview
-SDK stands for software development kit.A set of tools that can be used to create and develop applications.” In general, an SDK refers to a full-suite software module that includes everything you need for a specific module within an application.
-There is a StocknoteAPIPythonBridge class in the library: create a object for StocknoteAPIPythonBridge with an instance and from this class you can create a Session token using Login function.The StockNote APIs allow the user authentication using the session token from Login API. A valid StockNote Trading Account and subscription to StockNote API Services is a pre-requisite for successful authentication.
+Stocknote python SDK is a python client library for easily accessing the stocknote API.It exposes the individual APIs as python method calls and provides an easy-to-use interface for implementing your strategies in Python language.
  
-
+ 
 ### REST Documentation
 The original REST API that this SDK is based on is available online.
    [Stocknote API REST documentation](https://developers.stocknote.com/api/?python#stocknote-api-documentation)
