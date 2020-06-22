@@ -379,7 +379,7 @@ To place an equity/derivative order to the exchange i.e the place order BO reque
 The PlaceOrderBO function name in python is `place_order_bo()`
 #### Sample PlaceOrderBO Request:
 ```python
-print(samco.place_order_bo(body={
+samco.place_order_bo(body={
 "symbolName":"TCS",
 "exchange":"BSE",
 "transactionType":samco.TRANSACTION_TYPE_BUY,
@@ -394,7 +394,7 @@ print(samco.place_order_bo(body={
 "squareOffValue":"15.00",
 "stopLossValue":"5.00",
 "trailingStopLoss":"5"
-}))
+})
 ```
 #### Sample PlaceOrderBO Response:
 ```python
@@ -431,7 +431,7 @@ To place an equity/derivative order to the exchange i.e the place order CO reque
 The PlaceOrderCO function name in python is `place_order_co()`
 #### Sample PlaceOrderCO Request:
 ```Python
-print(samco.place_order_co(body={
+samco.place_order_co(body={
 "symbolName":"INFY",
 "exchange":samco.EXCHANGE_NSE,
 "transactionType":samco.TRANSACTION_TYPE_BUY,
@@ -442,7 +442,7 @@ print(samco.place_order_co(body={
 "orderValidity":samco.VALIDITY_DAY,
 "productType":samco.PRODUCT_CO,
 "afterMarketOrderFlag":"NO",
-"triggerPrice":"646"}))
+"triggerPrice":"646"})
 ```
 #### Sample PlaceOrderCO Response:
 ```Python
@@ -480,7 +480,7 @@ The ModifyOrder function name in python is `modify_order()`
 
 #### Sample ModifyOrder Request:
 ```python
-print(samco.modify_order(order_number='200616000000350',body={"quantity": "50"}))
+samco.modify_order(order_number='200616000000350',body={"quantity": "50"})
 ```
 #### Sample ModifyOrder Response:
 ```python
@@ -518,7 +518,7 @@ The OrderBook function name in python is `get_order_book()`
 
 #### Sample OrderBook Request:
 ```python
-print(samco.get_order_book())
+samco.get_order_book()
 ```
 #### Sample OrderBook Response:
 ```Python
@@ -570,7 +570,7 @@ The TriggerOrders function name in python is `get_trigger_order_numbers()`
 
 #### Sample TriggerOrders Request:
 ```python
-print(samco.get_trigger_order_numbers(order_number="200617000000378"))
+samco.get_trigger_order_numbers(order_number="200617000000378")
 ```
 #### Sample TriggerOrders Response:
 ```python
@@ -600,7 +600,7 @@ Get status of an order placed previously. This API returns all states of the ord
 The OrderStatus function name in python is `get_order_status`
 #### Sample OrderStatus Request:
 ```python
-print(samco.get_order_status(order_number="200617000000378"))
+samco.get_order_status(order_number="200617000000378")
 ```
 #### Sample OrderStatus Response:
 ```python
@@ -635,7 +635,7 @@ An order which is open or pending in system can be cancelled. In other words, ca
 The CancleOrder function name in python is `cancel_order()`
 #### Sample CancelOrder Request:
 ```python
-print(samco.cancel_order(order_number='200616000000350'))
+samco.cancel_order(order_number='200616000000350')
 ```
 #### sample CancelOrder Response:
 ```python
@@ -654,7 +654,7 @@ If the main leg is executed and if Stop loss is hit, API will return error messa
 The CancleOrder function name in python is `cancel_order_co()`
 #### Sample CancelOrderCO Request:
 ```python
-print(samco.cancel_order_co(order_number='200617000000181'))
+samco.cancel_order_co(order_number='200617000000181')
 ```
 #### sample CancelOrderCO Response:
 ```python
@@ -673,7 +673,7 @@ If the main leg is executed and if either of Stop loss or target is hit, API wil
 The CancleOrder function name in python is `cancel_order_bo()`
 #### Sample CancelOrderBO Request:
 ```python
-print(samco.cancel_order_bo(order_number='200617000000375'))
+samco.cancel_order_bo(order_number='200617000000375')
 ```
 #### sample CancelOrderBO Response:
 ```python
@@ -690,7 +690,7 @@ Details of all successfully executed orders placed by the user.
 The TradeBook function name in python is `get_trade_book()`
 #### Sample TradeBook Request:
 ```python
-print(samco.get_trade_book())
+samco.get_trade_book()
 ```
 #### Sample TradeBook Response:
 ```python
@@ -729,7 +729,7 @@ Get position details of the user (The details of equity, derivative, commodity, 
 The Postions function name in python is `get_positions_data()`
 #### Sample Positions Request:
 ```Python
-print(samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY))
+samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY)
 ```
 #### Sample Positions Response:
 ```python
@@ -778,7 +778,7 @@ Convert an existing position of a margin product to a different margin product t
 The PostionConversion function name in python is `convert_position()`
 ##### Sample PositionConverstion Request:
 ```python
-print(samco.convert_position(body={ 
+samco.convert_position(body={ 
   "symbolName":"TSC",
   "exchange":"BSE",
   "transactionType":"BUY",
@@ -787,7 +787,7 @@ print(samco.convert_position(body={
    "fromProductType":"MIS",
    "toProductType":"CNC",
    "netQuantity":"2"
-}))
+})
 ```
 #### Sample PostionConverstion Response:
 ```python
@@ -804,7 +804,7 @@ Get the details of the Stocks which client is holding. Here, you will be able to
 The Holdings function name in python is `get_holding()`
 #### Sample Holdings Request:
 ```python
-Print(samco.get_holding())
+samco.get_holding()
 ```
 #### Sample Holdings Response:
 ```python
@@ -884,7 +884,7 @@ Gets the Intraday candle data such as Open, high, low, close and volume within s
 The IndexIntraDayCandleData function name in python is `get_intraday_candle_data()`
 #### Sample IntraDayCandleData Request:
 ```Python
-print(samco.get_intraday_candle_data(symbol_name='INFY',exchange=samco.EXCHANGE_NSE, from_date='2020-06-17 10:22:00',to_date='2020-06-17 10:28:00'))
+samco.get_intraday_candle_data(symbol_name='INFY',exchange=samco.EXCHANGE_NSE, from_date='2020-06-17 10:22:00',to_date='2020-06-17 10:28:00')
 ```
 #### Sample IntraDayCandleData Response:
 ```python
@@ -958,7 +958,7 @@ Gets the Index intraday candle data such as Open, high, low, close and volume wi
 The IndexIntraDayCandleData function name in python is `get_index_intraday_candle_data()`
 #### Sample IndexIntraDayCandleData Request:
 ```Python
-print(samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 09:23:00',to_date='2020-06-16 9:28:00'))
+samco.get_index_intraday_candle_data(index_name='sensex', from_date='2020-06-16 09:23:00',to_date='2020-06-16 9:28:00')
 ```
 #### Sample IndexIntraDayCandleData Response:
 ```Python
@@ -1025,7 +1025,7 @@ The HistoricalCandleData function name in python is `get_index_intraday_candle_d
 
 #### Sample HistoricalCandleData Request:
 ```python
-print(samco.get_historical_candle_data(symbol_name='BANKNIFTY18JUN2018500PE',exchange=samco.EXCHANGE_NFO, from_date='2020-06-14',to_date='2020-06-17'))
+samco.get_historical_candle_data(symbol_name='BANKNIFTY18JUN2018500PE',exchange=samco.EXCHANGE_NFO, from_date='2020-06-14',to_date='2020-06-17')
 ```
 #### Sample HistoricalCandleData respone:
 ```python
@@ -1061,7 +1061,7 @@ Gets the Index historical candle data such as Open, high, low, close, last trade
 The IndexHistoricalCandleData function name in python is `get_index_candle_data()`
 #### Sample IndexHistoricalCandleData Request;
 ```python
-print(samco.get_index_candle_data(index_name='NIFTY 200', from_date='2019-05-24',to_date='2019-05-29'))
+samco.get_index_candle_data(index_name='NIFTY 200', from_date='2019-05-24',to_date='2019-05-29')
 ```
 #### Sample IndexHistoricalCandleData Response:
 ```python
@@ -1136,7 +1136,7 @@ The Logout function name in python is `logout()`
 
 #### Sample Logout Request:
 ```python
-print(samco.logout())
+samco.logout()
 ```
 #### Sample Logout Response:
 ```python
