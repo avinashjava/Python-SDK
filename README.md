@@ -57,7 +57,9 @@ samco=StocknoteAPIPythonBridge()
 3. Get the login function so you can login with your Stocknote APi by providing below parameters.
 
 ## Parameters:
-    `userId`,` password`,` yob`
+*`userId`
+*` password`
+*` yob`
 ## Login Sample Request:
   ```python
   login=samco.login(body={"userId":'*****','password':'*****','yob':'****'})
