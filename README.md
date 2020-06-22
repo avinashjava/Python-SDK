@@ -34,6 +34,7 @@ The modules can also be installed using `pip`
 ## Getting started with API
 
 ### Overview
+SDK stands for software development kit.A set of tools that can be used to create and develop applications.” In general, an SDK refers to a full-suite software module that includes everything you need for a specific module within an application.
 There is a StocknoteAPIPythonBridge class in the library: create a object for StocknoteAPIPythonBridge with an instance and from this class you can create a Session token using Login function.The StockNote APIs allow the user authentication using the session token from Login API. A valid StockNote Trading Account and subscription to StockNote API Services is a pre-requisite for successful authentication.
  
 
@@ -100,7 +101,7 @@ The search function name in python is `search_equity_derivative()`
 
 #### Parameters:
 ```python
-search_symbol_name,exchange
+`search_symbol_name`,exchange
 ```
 #### Sample Search Request:
 ```python
@@ -162,7 +163,7 @@ The Quote function name in python is `get_quote()`
 
 #### Parameters:
 ```python
-symbol_name,exchange
+`symbol_name`,exchange
 ```
 #### Sample Quote request:
 ```python
