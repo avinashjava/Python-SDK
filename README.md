@@ -1,12 +1,13 @@
 # Python SDK for Stocknote API
 Official Python SDK for accessing Stocknote API
 
-This documentation covers details of the Python bridge / SDK created for accessing the 
- [SAMCO Stocknote APIs](https://developers.stocknote.com/api/?python#stocknote-api-documentation). The primary purpose of this Python Bridge is to help our customers who wanted to use Python scripts as their client platform so that they can quickly create python based clients and easily access StockNote APIs.
- 
-Stocknote API Python Bridge provides a wrapper over the HTTP StockNote APIs where the HTTP calls have been converted to wrapper methods with JSON responses. Websocket connections are handled automatically with the library.
+This documentation covers details of the Python bridge / SDK provided by SAMCO, for accessing the [SAMCO Stocknote APIs](https://developers.stocknote.com/api/?python#stocknote-api-documentation).
 
-Please refer the below documentation for details on step by step installation, set up and sample code/request-responses while creating your Python client code.
+The primary purpose of this Python Bridge is to help our customers who wanted to use Python scripts as their client platform so that they can quickly create python based clients using our SDK and easily integrate StockNote APIs.
+
+Stocknote API Python Bridge provides a wrapper over the HTTP StockNote APIs where the HTTP calls have been converted to method calls with JSON responses. Websocket connections are handled automatically with the library.
+
+Please refer the below documentation for details on installation, set up and API specific sample code/request-responses to create your own Python client code.
 
 ## Installation
 
