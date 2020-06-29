@@ -33,7 +33,7 @@ The modules can also be installed using `pip`
 ## Getting started with API
 
 ### Overview
-Stocknote python SDK is a python client library as easily accessing the stocknote API.It exposes the individual APIs as python method calls and provides an easy-to-use interface for implementing your strategies in Python language.
+<p><b>Stocknote</b> python SDK is a python client library as easily accessing the stocknote API.It exposes the individual APIs as python method calls and provides an easy-to-use interface for implementing your strategies in Python language.</p>
  
 
 ## Using the API
