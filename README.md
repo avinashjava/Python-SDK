@@ -32,6 +32,8 @@ The modules can also be installed using `pip`
 
 ## Getting started with API
 
+[Search](#search)
+
 ### Overview
 <p><b>Stocknote</b> python SDK is a python client library as easily accessing the stocknote API.It exposes the individual APIs as python method calls and provides an easy-to-use interface for implementing your strategies in Python language.</p>
  
@@ -91,10 +93,15 @@ userId,password,yob
 samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
 ## this function will help to reduce to pass session token for other apis. This will automate the session token for other apis
 ```
-### Search Equity & Derivative:
+
+<a name="search"/>
+
+## Search
+
+```
 To search equity, derivatives and commodity scrips based on user provided search symbol and exchange name. 
 The search function name in python is `search_equity_derivative()`
-
+```
 #### Parameters:
 ```python
 search_symbol_name,exchange
@@ -152,6 +159,7 @@ samco.search_equity_derivative(search_symbol_name="BANKNIFTY20JUN",exchange=samc
         }
     ]
 }
+```
 ```
 ### Quote:
 Get market depth details for a specific equity scrip including but not limited to values like last trade price, previous close price, change value, change percentage, bids/asks, upper and lower circuit limits etc. This helps user with market picture of an equity scrip using which he will be able to place an order.
