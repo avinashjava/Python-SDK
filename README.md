@@ -98,10 +98,9 @@ samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
 
 ## SearchEquityDerivative
 
-```
 To search equity, derivatives and commodity scrips based on user provided search symbol and exchange name. 
 The search function name in python is `search_equity_derivative()`
-```
+
 #### Parameters:
 ```python
 search_symbol_name,exchange
