@@ -32,7 +32,7 @@ The modules can also be installed using `pip`
 
 ## Getting started with API
 
-[Search](#search)
+[SearchEquityDerivative](#searchequityderivative)
 
 ### Overview
 <p><b>Stocknote</b> python SDK is a python client library as easily accessing the stocknote API.It exposes the individual APIs as python method calls and provides an easy-to-use interface for implementing your strategies in Python language.</p>
@@ -94,9 +94,9 @@ samco.set_session_token(sessionToken="cbcc85c02d057187a4c6512ae0978946")
 ## this function will help to reduce to pass session token for other apis. This will automate the session token for other apis
 ```
 
-<a name="search"/>
+<a name="searchequityderivative"/>
 
-## Search
+## SearchEquityDerivative
 
 ```
 To search equity, derivatives and commodity scrips based on user provided search symbol and exchange name. 
