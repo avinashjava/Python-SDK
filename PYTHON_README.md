@@ -692,7 +692,7 @@ The Quote function name in python is `get_quote()`
 
 #### Parameters:
 ```python
-`symbol_name`,exchange
+symbol_name,exchange
 ```
 <details>
   <summary>Sample Quote Request/Response  for Cash segment</summary>
@@ -1537,8 +1537,7 @@ The PlaceOrderBO function `place_order_bo()` can be used to place an equity/deri
 
 #### Parameters:
 ```python
-symbol_name,exchange,transactionT
-ype,orderType,price,quantity,disclosedQuantity,orderValidity,productType,trailingStopLoss,stopLossValue,squareOffValue,valueType,priceType,
+symbol_name,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,trailingStopLoss,stopLossValue,squareOffValue,valueType,priceType,
 ```
 <details>
   <summary>Sample PlaceOrderBO Request/Response  for Cash segment</summary>
@@ -2057,7 +2056,7 @@ Response:
 
 Request:
   ```python
-	samco.modify_order(order_number='200616000000350',body={"quantity": "50"})
+	samco.modify_order(order_number='201123000134794',body={"quantity": "50"})
   ```
 
 Response:  
@@ -3637,7 +3636,7 @@ The API uses WebSocket protocol to establish a dedicated TCP connection after an
 
 
 <details>
-  <summary>Sample Positions Request</summary>
+  <summary>Sample Streaming Data Request</summary>
 
     value=[{"symbol":"-53"},{"symbol":"1143_CDS"},{"symbol":"1270_NSE"},{"symbol":"10604_NSE"},{"symbol":"11195_NSE"}]
     samco.set_streaming_data(value)
@@ -3647,7 +3646,7 @@ The API uses WebSocket protocol to establish a dedicated TCP connection after an
 
 
 <details>
-  <summary>Sample Positions Response</summary>
+  <summary>Sample Streaming Data Response</summary>
 
       Message Arrived:{"response":{"data":{"aPr":"0.00","aSz":"0","avgPr":"0.00","bPr":"0.00", "bSz":"0","c":"29.65","ch":"0.38","chPer":"1.28",
       "h":"30.28","l":"27.24","lTrdT":"09 Jun 2020, 02:11:58 PM","ltp":"30.03","ltq":"0","ltt":"09 Jun 2020, 02:11:58 PM","lttUTC":"09 Jun 2020, 08:41:58 AM",
@@ -3763,8 +3762,3 @@ This section contains the list of possible constant values that can be passed fo
     INTERVAL_60MIN
     Example:- "interval": sn.constants.INTERVAL_10MIN
 </details>
-
-   
-   
-   
-  
